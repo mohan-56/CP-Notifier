@@ -71,9 +71,9 @@ const Navbar = (props) => {
         </li>
         <li>
           <NavLink to="/about">
-            <i className="small material-icons red-text pulse">favorite</i>
+            <i className="small material-icons red-text pulse">computer</i>
             Built by
-            <span className="red-text"> Sabuj Jana</span>
+            <span className="red-text"> Mohan Polamarasetty</span>
           </NavLink>
         </li>
       </ul>

@@ -2,15 +2,19 @@ import React, { useEffect } from "react";
 import { fetchUsers } from "../redux/generic/genericActions";
 import { connect } from "react-redux";
 import Spinner from "./Spinner";
-import { Link, Route } from "react-router-dom";
+import { Link, Route, Routes, useLocation } from "react-router-dom";
 import { setLocalContest } from "../redux/generic/genericActions";
 import GenericWrapper from "./GenericWrapper";
 import { setSiteName } from "../redux/generic/genericActions";
 import Error from "../components/Error";
-
+import { useParams} from 'react-router-dom';
 const Generic = (props) => {
+  const {generic_site}=useParams  
+  const location=useLocation
+  const url=`${location.pathname}${location.search}`
   useEffect(() => {
-    const site_name = props.match.params.generic_site;
+   
+    const site_name = generic_site;
 
     let found = false;
     const data = props.localStorage;
@@ -28,7 +32,7 @@ const Generic = (props) => {
     }
 
     //eslint-disable-next-line
-  }, [props.match.params.generic_site]);
+  }, [generic_site]);
 
   const subLinkStyle = {
     // fontWeight: "bold",
@@ -89,17 +93,17 @@ const Generic = (props) => {
               <div className="card-tabs blue-grey">
                 <ul className="tabs tabs-fixed-width">
                   <li className="tab btn yellow darken-2 waves-effect waves-light">
-                    <Link to={props.match.url + "/future"} style={subLinkStyle}>
+                    <Link to={url + "/future"} style={subLinkStyle}>
                       Future
                     </Link>
                   </li>
                   <li className="tab btn green lighten-2 waves-effect waves-light">
-                    <Link to={props.match.url + "/live"} style={subLinkStyle}>
+                    <Link to={url + "/live"} style={subLinkStyle}>
                       Live
                     </Link>
                   </li>
                   <li className="tab btn red lighten-1 waves-effect waves-light">
-                    <Link to={props.match.url + "/past"} style={subLinkStyle}>
+                    <Link to={url + "/past"} style={subLinkStyle}>
                       Past
                     </Link>
                   </li>
@@ -107,19 +111,21 @@ const Generic = (props) => {
               </div>
             </div>
             {/* // sub Routes */}
+            <Routes>
             <Route
-              path={props.match.url + "/live"}
+              path={url + "/live"}
               render={GenericWrapperWithPropsLive}
             />
             <Route
-              path={props.match.url + "/future"}
+              path={url + "/future"}
               render={GenericWrapperWithPropsFuture}
             />
             {/* <Redirect from="/steps" exact to="/steps/whatever" /> */}
             <Route
-              path={props.match.url + "/past"}
+              path={url + "/past"}
               render={GenericWrapperWithPropsPast}
             />
+            </Routes>
           </div>
           <div className="col s0 m3"> </div>
         </div>

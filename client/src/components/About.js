@@ -21,7 +21,7 @@ const About = () => {
   };
 
   return (
-    <Fragment>
+    <>
       <div className="row" style={{ height: "75px" }} />
       <div className="row" style={styleAbout}>
         <div className="col s0 m3"> </div>
@@ -30,15 +30,15 @@ const About = () => {
             <div className="card-content black-text">
               <span className="card-title">
                 {" "}
-                <i className="material-icons red-text">favorite</i>
+                <i className="material-icons red-text">computer</i>
               </span>
               <p>App Version 1.0.0</p>
               <p>
                 Built by{" "}
                 <span style={styleName} className="red-text">
-                  Sabuj Jana
+                 Mohan 
                 </span>{" "}
-                <i className="tiny material-icons">copyright</i> 2020
+                <i className="tiny material-icons">copyright</i> 2024
               </p>
             </div>
             <div className="card-action">
@@ -65,7 +65,7 @@ const About = () => {
         </div>
         <div className="col s0 m3"> </div>
       </div>
-    </Fragment>
+    </>
   );
 };
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./styles.css";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Routes } from "react-router-dom";
 
 import axios from "axios";
 import ReactGa from "react-ga";
@@ -45,12 +45,12 @@ const App = () => {
           <BrowserRouter>
             <div className="App">
               <Navbar />
-              <Switch>
-                <Route exact path="/" component={Dashboard} />
-                <Route exact path="/about" component={About} />
-                <Route exact path="/spinner" component={Spinner} />
-                <Route path="/:generic_site" component={Generic} />
-              </Switch>
+              <Routes>
+                <Route exact path="/" element={<Dashboard/>} />
+                <Route exact path="/about" element={<About/>} />
+                <Route exact path="/spinner" element={<Spinner/>} />
+                <Route path="/:generic_site/*" element={<Generic/>} />
+              </Routes>
             </div>
           </BrowserRouter>
         </Provider>

@@ -7,8 +7,9 @@ const Dashboard = (props) => {
   return (
     <Fragment>
       <div className="row" style={{ height: "15px" }}>
-        {" "}
+        {" " }
       </div>
+    {/* {console.log( {sites})} */}
       {sites.length && sites.map((el) => <IntroCard info={el} key={el.id} />)}
     </Fragment>
   );
